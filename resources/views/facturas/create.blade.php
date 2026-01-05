@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <h4>Registrar Factura</h4>
 
@@ -15,7 +14,6 @@
 
     <form method="POST" action="{{ route('facturas.store') }}">
         @csrf
-
         {{-- Selección de cliente --}}
         <div class="mb-3">
             <label>Cliente *</label>
@@ -31,9 +29,7 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
-
         <hr>
-
         {{-- Productos --}}
         <h5>Productos</h5>
         @foreach($productos as $p)
@@ -56,7 +52,6 @@
                 </div>
             </div>
         @endforeach
-
         <button class="btn btn-success mt-3">Generar Factura</button>
         <a href="{{ route('facturas.index') }}" class="btn btn-secondary mt-3">Cancelar</a>
     </form>

@@ -1,16 +1,12 @@
 <?php
-
 namespace App\Http\Requests;
-
 use Illuminate\Foundation\Http\FormRequest;
-
 class ProductoRequest extends FormRequest
 {
     public function authorize(): bool
     {
         return true;
     }
-
     public function rules(): array
     {
         $productoId = $this->route('producto') ? $this->route('producto')->id : null;
@@ -22,7 +18,6 @@ class ProductoRequest extends FormRequest
             'stock' => 'required|integer|min:0'
         ];
     }
-
     public function messages(): array
     {
         return [

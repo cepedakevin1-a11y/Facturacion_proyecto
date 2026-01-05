@@ -1,9 +1,7 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <h4>Modificar Factura #{{ $factura->id }}</h4>
-
         @if($errors->any())
             <div class="alert alert-danger">
                 <ul class="mb-0">
@@ -13,11 +11,9 @@
                 </ul>
             </div>
         @endif
-
         <form method="POST" action="{{ route('facturas.update', $factura) }}">
             @csrf
             @method('PUT')
-
             {{-- Selección de cliente --}}
             <div class="mb-3">
                 <label>Cliente *</label>
@@ -34,20 +30,16 @@
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
-
             <hr>
-
             {{-- Productos --}}
             <h5>Productos</h5>
             @foreach($productos as $p)
                 @php
-                    // Ver si el producto ya está en la factura
                     $cantidad = 0;
                     if($factura->productos->contains($p->id)){
                         $cantidad = $factura->productos->find($p->id)->pivot->cantidad;
                     }
                 @endphp
-
                 <div class="row mb-2">
                     <div class="col-md-6">
                         {{ $p->nombre }} (Stock: {{ $p->stock }})
@@ -67,7 +59,6 @@
                     </div>
                 </div>
             @endforeach
-
             <button class="btn btn-primary mt-3">Actualizar Factura</button>
             <a href="{{ route('facturas.index') }}" class="btn btn-secondary mt-3">Cancelar</a>
         </form>

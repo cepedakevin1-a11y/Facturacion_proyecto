@@ -1,14 +1,11 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <h4 class="mb-3">Detalle de Factura #{{ $factura->id }}</h4>
-
         {{-- Mensajes --}}
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
-
         {{-- Datos del cliente --}}
         <div class="card mb-3">
             <div class="card-body">
@@ -21,7 +18,6 @@
                 <p><strong>Fecha:</strong> {{ \Carbon\Carbon::parse($factura->fecha)->format('d/m/Y') }}</p>
             </div>
         </div>
-
         {{-- Productos --}}
         <div class="card mb-3">
             <div class="card-body">
@@ -48,7 +44,6 @@
                 </table>
             </div>
         </div>
-
         {{-- Totales --}}
         <div class="card mb-3">
             <div class="card-body">
@@ -60,7 +55,6 @@
                 </p>
             </div>
         </div>
-
         <a href="{{ route('facturas.index') }}" class="btn btn-secondary">Volver a Facturas</a>
     </div>
 @endsection

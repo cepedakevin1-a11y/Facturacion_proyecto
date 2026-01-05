@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
 
 class DetalleFactura extends Model
@@ -15,12 +13,10 @@ class DetalleFactura extends Model
         'precio',
         'subtotal'
     ];
-
     public function producto()
     {
         return $this->belongsTo(Producto::class);
     }
-
     public function factura()
     {
         return $this->belongsTo(Factura::class);

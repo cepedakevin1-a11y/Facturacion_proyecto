@@ -1,16 +1,12 @@
 <?php
-
 namespace App\Http\Requests;
-
 use Illuminate\Foundation\Http\FormRequest;
-
 class ClienteRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true; // IMPORTANTE (evita error 403)
+        return true;
     }
-
     public function rules(): array
     {
         return [
@@ -22,7 +18,6 @@ class ClienteRequest extends FormRequest
             'direccion' => 'nullable|string|max:150'
         ];
     }
-
     public function messages(): array
     {
         return [

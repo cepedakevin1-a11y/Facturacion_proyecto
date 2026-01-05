@@ -1,16 +1,11 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <h4 class="mb-3">Gestión de Facturas</h4>
-
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
-
         <a href="{{ route('facturas.create') }}" class="btn btn-primary mb-3">Registrar Factura</a>
-
-        {{-- Card de búsqueda --}}
         <div class="card mb-3">
             <div class="card-body">
                 <form method="GET" action="{{ route('facturas.index') }}" class="row g-2 align-items-end">
@@ -19,7 +14,6 @@
                         <label>Cliente</label>
                         <input type="text" name="buscar" class="form-control" placeholder="Nombre, apellido o cédula" value="{{ request('buscar') }}">
                     </div>
-
                     <div class="col-md-3">
                         <label>Estado</label>
                         <select name="estado" class="form-control">
@@ -28,12 +22,10 @@
                             <option value="0" {{ request('estado') == '0' ? 'selected' : '' }}>ANULADA</option>
                         </select>
                     </div>
-
                     <div class="col-md-3">
                         <label>Fecha</label>
                         <input type="date" name="fecha" class="form-control" value="{{ request('fecha') }}">
                     </div>
-
                     <div class="col-md-2">
                         <button class="btn btn-secondary w-100">Buscar</button>
                     </div>
@@ -41,8 +33,6 @@
                 </form>
             </div>
         </div>
-
-        {{-- Tabla de facturas --}}
         <table class="table table-bordered table-striped">
             <thead class="table-light">
             <tr>

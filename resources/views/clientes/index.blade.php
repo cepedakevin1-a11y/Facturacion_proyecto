@@ -1,29 +1,23 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
-
         <h4 class="mb-3">Gestión de Clientes</h4>
-
-        {{-- MENSAJES --}}
+        {{-- Mensajes --}}
         @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
-
         @if(session('error'))
             <div class="alert alert-danger">
                 {{ session('error') }}
             </div>
         @endif
-
-        {{-- BOTÓN REGISTRAR --}}
+        {{-- Boton de Registrar --}}
         <a href="{{ route('clientes.create') }}" class="btn btn-primary mb-3">
             Registrar Cliente
         </a>
-
-        {{-- FORMULARIO DE CONSULTA --}}
+        {{-- formulario de consulta --}}
         <form method="GET" action="{{ route('clientes.index') }}" class="row mb-3">
             <div class="col-md-4">
                 <input type="text"
@@ -36,8 +30,7 @@
                 <button class="btn btn-secondary">Consultar</button>
             </div>
         </form>
-
-        {{-- TABLA --}}
+        {{-- Tabla de las consultas --}}
         <table class="table table-bordered table-striped">
             <thead class="table-light">
             <tr>

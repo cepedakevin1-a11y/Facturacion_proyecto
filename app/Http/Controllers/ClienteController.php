@@ -1,14 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClienteRequest;
-
 class ClienteController extends Controller
 {
-    // CONSULTA GENERAL + CONSULTA POR PARÁMETROS
     public function index(Request $request)
     {
         $query = Cliente::where('estado', true);
@@ -22,17 +18,14 @@ class ClienteController extends Controller
                     ->orWhere('apellido', 'like', "%$buscar%");
             });
         }
-
         $clientes = $query->get();
 
         return view('clientes.index', compact('clientes'));
     }
-
     public function create()
     {
         return view('clientes.create');
     }
-
     public function store(ClienteRequest $request)
     {
         Cliente::create(
@@ -42,12 +35,10 @@ class ClienteController extends Controller
         return redirect()->route('clientes.index')
             ->with('success', 'Operación realizada correctamente.');
     }
-
     public function edit(Cliente $cliente)
     {
         return view('clientes.edit', compact('cliente'));
     }
-
     public function update(ClienteRequest $request, Cliente $cliente)
     {
         $cliente->update($request->validated());
@@ -55,8 +46,6 @@ class ClienteController extends Controller
         return redirect()->route('clientes.index')
             ->with('success', 'Operación realizada correctamente.');
     }
-
-
     public function destroy(Cliente $cliente)
     {
         $cliente->update(['estado' => false]);

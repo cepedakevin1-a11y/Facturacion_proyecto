@@ -17,27 +17,21 @@
         </div>
     </div>
 </nav>
-
 <div class="container">
-
-    {{-- MENSAJES ESTÁNDAR --}}
+    {{-- Mensajes Estándares--}}
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
-
     @if(session('error'))
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
-
-    {{-- ERRORES DE VALIDACIÓN --}}
+    {{-- Errores de validación --}}
     @if($errors->any())
         <div class="alert alert-warning">
             {{ $errors->first() }}
         </div>
     @endif
-
     @yield('content')
 </div>
-
 </body>
 </html>
